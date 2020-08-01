@@ -1,8 +1,10 @@
 const container = document.querySelector(".container");
 const seats = document.querySelectorAll(".row .seat:not(.occupied)");
 const count = document.getElementById("count");
-const total = document.getElementById("total");
+let total = document.getElementById("total");
 const movieSelect = document.getElementById("movie");
+const text = document.getElementById("text");
+const seatsNumber = document.getElementById("seatsNumber");
 
 populateUI();
 
@@ -14,6 +16,17 @@ function setMovieData(movieIndex, moviePrice) {
   localStorage.setItem("selectedMoviePrice", moviePrice);
 }
 
+// Update text
+function updateText(selectedSeatsCount, totalPrice) {
+  if (selectedSeatsCount === 0) {
+    text.innerText = "Please select seats.";
+  } else {
+    text.innerText = `You have selected ${selectedSeatsCount} ${
+      selectedSeatsCount === 1 ? "seat" : "seats"
+    } for a price of ${totalPrice}`;
+  }
+}
+
 //Update total price and count
 function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
@@ -23,9 +36,11 @@ function updateSelectedCount() {
 
   const selectedSeatsCount = selectedSeats.length;
 
-  count.innerText = selectedSeatsCount;
-  total.innerText = selectedSeatsCount * ticketPrice;
+  total = selectedSeatsCount * ticketPrice;
+
+  updateText(selectedSeatsCount, total);
 }
+
 // Get data from localStorage and populate UI
 function populateUI() {
   const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
