@@ -8,7 +8,7 @@ With the App a user can pick seats and select a movie. Each movie has a differen
 
 To install the app, clone or download a local copy of the app and simply open the index.html from any web browser.
 
-As an alternative, the app can be viewed on the live version: [Movie Seat Booking]()
+As an alternative, the app can be viewed on the live version: [Movie Seat Booking](https://pchelka84.github.io/movie-seats-booking/)
 
 ![Movie Seat Booking](img/movie-noseats-booking.JPG)
 
